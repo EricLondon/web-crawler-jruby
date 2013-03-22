@@ -288,9 +288,9 @@ class Crawler
   end
 
   # Can't believe I had to write this...
-  PORN_WORDS = ['tranny', 'sex', 'xxx', 'slut', 'pussy', 'cock' 'joyourself', 'mycams', 'blowjob', 'handjob', 'vagina', 'penis', ]
-  WARM_WORDS = ['girl', 'boy', 'cam', 'xx', 'ass', 'tit', 'porn', 'cum', 'xoxo', 'mature']
-  TEPID_WORDS = ['nasty', 'private', 'live', 'hot', 'desire', 'doll']
+  PORN_WORDS = ['sex']
+  WARM_WORDS = ['ass']
+  TEPID_WORDS = ['live']
   def self.porn_score(href)
     score = 0
     dom = Crawler.get_domain(href).to_s.downcase.alphascrub
