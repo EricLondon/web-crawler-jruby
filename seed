@@ -1,0 +1,25 @@
+require 'lib/init'
+
+SCORE_BOOST = 10000
+
+ARGV.each do |a|
+  begin
+    POOL.with {|c| c.insert("insert into links (content, href, domain, prospect_score) values ('', '#{a}', '#{Crawler.get_domain(a)}', #{SCORE_BOOST})") }
+  rescue Java::OrgPostgresqlUtil::PSQLException => e
+    raise e unless e.message.include? "violates unique constraint"
+    id = POOL.with {|c| c.query("select id from links where href ='#{a}'") }[0]['id']
+    POOL.with {|c| c.update("update links set prospect_score = #{SCORE_BOOST} where id = #{id}") }
+  rescue Exception => ee
+    puts ee.to_s
+  end
+
+  begin
+    x = POOL.with {|c| c.query("select max(id) as id from links")}
+    Crawler.perform_async(x[0]["id"])
+    print "."; STDOUT.flush
+  rescue Exception => e
+    puts e.to_s
+  end
+end
+
+puts ""

@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'httpclient'
+gem 'sidekiq'
+gem 'jdbc-postgres', '9.1.901'
+gem 'nokogiri'
+gem 'sinatra'
+gem 'slim'
+gem 'activesupport'
+gem 'simple-rss'
+gem 'bloomfilter-rb', :github => 'bdigital/bloomfilter-rb'
+gem 'ruby-debug'

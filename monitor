@@ -1,0 +1,2 @@
+#!/bin/bash
+jruby -S rackup config/monitor.ru

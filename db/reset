@@ -1,0 +1,5 @@
+#!/bin/bash
+dropdb crawl
+createdb crawl
+psql -d crawl < $(dirname $0)/tables.sql
+jruby -S $(dirname $0)/../seed https://github.com http://37signals.com http://ibm.com 

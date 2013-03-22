@@ -1,0 +1,5 @@
+#!/bin/bash
+mkdir images 2> /dev/null
+#./monitor 1,2> /dev/null &
+#./seed http://www.ibm.com 1,2> /dev/null &
+jruby -Xinvokedynamic.constants=true -J-Xmx8G -J-Xss8M -S sidekiq --require lib/init.rb --config config/sidekiq.yml 

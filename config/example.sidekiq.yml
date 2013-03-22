@@ -1,0 +1,10 @@
+:verbose: false
+:pidfile: /tmp/sidekiq.pid
+:namespace: sidekiq_namespace
+:concurrency: 10 
+:poll_interval: 2
+:log_format: matrix
+:queues:
+  - [crawler, 1]
+  - [dispatcher, 2]
+  - [default, 1]
